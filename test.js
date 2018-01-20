@@ -1,7 +1,7 @@
 var Web3 = require('web3');
 var sleep = require('sleep');
 //var web3 = new Web3(new Web3.providers.HttpProvider('http://localhost:8545'));
-var web3 = new Web3('ws://localhost:8545');
+var web3 = new Web3(new Web3.providers.WebsocketProvider("ws://localhost:8545"));
 var shh  =web3.shh;
 var identities = [];
 var subscription = null;
@@ -30,9 +30,9 @@ Promise.all([
         ttl: 30,
         topic: '0xffaadd11',
         payload: '0xffffffdddddd1122',
-        powTime: 3,
-        powTarget: 0.5
+        powTime: 5,
+        powTarget: 0.9
     })
 }).then(() => {
-  sleep.sleep(100); //This is just temporary to see if message comes through
+//  sleep.sleep(100); //This is just temporary to see if message comes through
 });
